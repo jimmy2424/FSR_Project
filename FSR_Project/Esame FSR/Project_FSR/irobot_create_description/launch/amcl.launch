@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+  <!-- Localization-->
+  <node pkg="amcl" type="amcl" name="robot_amcl" output="screen">
+    <remap from="scan" to="robot/scan"/>
+    <rosparam file="$(find irobot_create_description)/config/amcl.yaml" command="load" />
+    <remap from="initialpose"               to="/robot/initialpose"/>
+    <remap from="amcl_pose"                 to="/robot/amcl_pose"/>
+    <remap from="particlecloud"             to="/robot/particlecloud"/>
+
+  </node>
+ 
+</launch>

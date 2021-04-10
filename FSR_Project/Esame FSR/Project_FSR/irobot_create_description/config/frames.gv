@@ -1,0 +1,14 @@
+digraph G {
+"robot_tf/base_footprint" -> "robot_tf/chassis"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"robot_tf/odom" -> "robot_tf/base_footprint"[label="Broadcaster: /gazebo\nAverage rate: 100.249 Hz\nMost recent transform: 60.447 ( 0.001 sec old)\nBuffer length: 4.010 sec\n"];
+"robot_tf/base_link" -> "robot_tf/base_link_left_motor_link"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"robot_tf/chassis" -> "robot_tf/base_link"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"robot_tf/base_link" -> "robot_tf/base_link_right_motor_link"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"robot_tf/chassis" -> "robot_tf/camera"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"robot_tf/chassis" -> "robot_tf/hokuyo"[label="Broadcaster: /robot/robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 60.448 sec old)\nBuffer length: 0.000 sec\n"];
+"map" -> "robot_tf/odom"[label="Broadcaster: /robot_amcl\nAverage rate: 40.211 Hz\nMost recent transform: 60.506 ( -0.058 sec old)\nBuffer length: 3.979 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 60.448"[ shape=plaintext ] ;
+ }->"map";
+}

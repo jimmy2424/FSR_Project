@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<launch>
+ 
+  <param name="robot_description"
+    command="$(find xacro)/xacro '$(find irobot_create_description)/urdf/create.urdf.xacro'" />
+    
+  <!-- BEGIN ROBOT-->
+  <group ns="robot">
+    <param name="tf_prefix" value="robot_tf" />
+    <include file="$(find hospital_world_2)/launch/one_robot.launch" >
+    
+      <arg name="init_pose" value="-x 0 -y 0 -z 0.15 -Y 0" />
+      <arg name="robot_name"  value="Robot" />
+    </include>
+  </group>
+
+
+</launch>

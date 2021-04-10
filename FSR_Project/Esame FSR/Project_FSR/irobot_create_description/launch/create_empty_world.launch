@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+    <param name="/use_sim_time" value="True" /> 
+
+    
+      <node name="map_server" pkg="map_server" type="map_server" args="$(find irobot_create_description)/maps/room.yaml" >
+  </node>
+	
+	<node name="static_tf0" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_link 100"/>
+	<node name="static_tf1" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_caster_support_link 100"/>
+	<node name="static_tf2" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_footprint 100"/>
+	<node name="static_tf3" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_link_left_wheel_link 100"/>
+	<node name="static_tf4" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_link_right_wheel_link 100"/>
+	<node name="static_tf5" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_link_left_motor_link 100"/>
+	<node name="static_tf6" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /base_link_right_motor_link 100"/>
+	<node name="static_tf7" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /camera 100"/>
+	<node name="static_tf8" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /caster_wheel_link 100"/>
+	<node name="static_tf9" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /chassis 100"/>
+	<node name="static_tf10" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /hokuyo 100"/>
+	<node name="static_tf11" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 robot_tf/base_footprint /rear_wheel_link 100"/>
+ <!-- AMCL -->
+
+   <include file="$(find irobot_create_description)/launch/amcl.launch" />
+
+   <!-- MOVE_BASE -->
+
+   <include file="$(find irobot_create_description)/launch/move_base.launch" /> 
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find irobot_create_description)/rviz/irobot.rviz" />
+
+
+
+</launch>
